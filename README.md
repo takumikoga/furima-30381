@@ -1,24 +1,49 @@
-# README
+# DB 設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## users table
 
-Things you may want to cover:
+| Column             | Type                | Options                 |
+|--------------------|---------------------|-------------------------|
+| email              | string              | null: false             |
+| password           | string              | null: false             |
+| nickname           | string              | null: false             |
 
-* Ruby version
+### Association
 
-* System dependencies
+* has_many :products
+* has_many :addresses
 
-* Configuration
+## products table
 
-* Database creation
+| Column             | Type                | Options                 |
+|--------------------|---------------------|-------------------------|
+| image              | text                | null: false             |
+| name               | string              | null: false             |
+| explanation        | text                | null: false             |
+| category           | text                | null: false             |
+| status             | text                | null: false             |
+| delivery fee       | text                | null: false             |
+| area               | text                | null: false             |
+| days               | text                | null: false             |
+| price              | text                | null: false             |
+| user               | references          | foreign_key: true       |
 
-* Database initialization
+### Association
 
-* How to run the test suite
+- belongs_to :user
+- belongs_to :address
 
-* Services (job queues, cache servers, search engines, etc.)
+## addresses table
 
-* Deployment instructions
+| Column             | Type                | Options                 |
+|--------------------|---------------------|-------------------------|
+| postal code        | text                | null: false             |
+| prefectures        | text                | null: false             |
+| municipalities     | text                | null: false             |
+| house number       | text                | null: false             |
+| telephone number   | text                | null: false             |
 
-* ...
+### Association
+
+* has_many :products
+* has_many :users
